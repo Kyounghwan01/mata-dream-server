@@ -8,6 +8,7 @@ const logger = require('morgan');
 require('dotenv').config();
 const app = express();
 const authRouter = require('./routes/auth');
+const parkRouter = require('./routes/park');
 
 const port = process.env.PORT || '3000';
 
@@ -36,7 +37,16 @@ app.use(session({
   }
 }));
 
+app.post('/newPark', async function(req, res, next) {
+  const Park = require('./models/Park');
+  const newCategory = new Park(req.body);
+  newCategory.save();
+  res.send({});
+});
+
+
 app.use('/auth', authRouter);
+app.use('/park', parkRouter);
 app.use(logger('dev'));
 
 // catch 404 and forward to error handler

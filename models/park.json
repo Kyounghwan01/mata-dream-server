@@ -1,0 +1,22 @@
+[{
+	"name" : "잠실한강공원",
+	"location" : {"latitude" : 37.5179635, "longitude" : 127.0797443},
+	"address" : "서울특별시 송파구 잠실 2동 한가롬로 65"
+},
+{
+	"name" : "여의도한강공원",
+  "location" : {"latitude" : 37.5284059, "longitude" : 126.9321125},
+	"address" : "서울특별시 영등포구 여의도동 여의동로 330"
+},{
+	"name" : "반포한강공원",
+  "location" : {"latitude" : 37.5097854, "longitude" : 126.9925553},
+	"address" : "서울특별시 서초구 반포2동 신반포로11길 40"
+},{
+	"name" : "이촌한강공원",
+  "location" : {"latitude" : 37.5159745, "longitude" : 126.9736427},
+	"address" : "서울특별시 용산구 이촌동 이촌로72길 62"
+},{
+	"name" : "뚝섬한강공원",
+  "location" : {"latitude" : 37.5291323, "longitude" : 127.0691572},
+	"address" : "서울특별시 광진구 자양동 704-1"
+}]
