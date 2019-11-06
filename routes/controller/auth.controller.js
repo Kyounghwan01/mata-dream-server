@@ -47,7 +47,7 @@ exports.createToken = async (req, res, next) => {
 exports.verifyToken = async (req, res, next) => {
   try {
     const userToken = req.headers.usertoken.split('Bearer ')[1];
-    const decoded = await jwt.verify(userToken, TOKEN_SECRET_KEY);
+    const decoded = await jwt.verify(userToken, process.env.TOKEN_SECRET_KEY);
     const currentUser = await User.findOne({ social_id: decoded.socialId });
     if (currentUser._id.toString() !== req.session.userId) {
       throw new Error();

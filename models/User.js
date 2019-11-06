@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const findOrCreate = require('mongoose-findorcreate');
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   social_service: {
     type: String,
     enum: ['FACEBOOK'],
@@ -20,7 +21,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: true
-  }
+  },
+  point: {
+    type: Number,
+    default: 1000
+  },
+  exchange_history: [
+    {
+       seller : {type: Schema.Types.ObjectId, required: true },
+       buyer : {type: Schema.Types.ObjectId},
+       point : {type: Number, required: true},
+       park : {type : Schema.Types.ObjectId, required: true}
+    }
+  ],
 }, { timestamps: true });
 
 userSchema.plugin(findOrCreate);
