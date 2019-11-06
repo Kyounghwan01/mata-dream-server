@@ -31,7 +31,12 @@ exports.sendFileLocation = (req, res, next) => {
 
 exports.saveExchangeData = async (req, res, next) => {
   const newExchange = new Seat(req.body.data);
-  Seat.save();
+  newExchange.save();
   console.log(req.body.data);
   res.send({ result: req.body.data });
 };
+
+exports.searchParkList = async (req, res, next)=>{
+  const parkList = await Seat.find().where('park').equals(req.params.id);
+  res.send({result : 'ok', parkList : parkList});
+}
