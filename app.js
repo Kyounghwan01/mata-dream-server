@@ -10,8 +10,7 @@ const app = express();
 const authRouter = require('./routes/auth');
 const parkRouter = require('./routes/park');
 
-const port = process.env.PORT || '3000';
-
+// const port = process.env.PORT || '3000';
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
@@ -66,8 +65,8 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`server is running on port ${port}`);
+// });
 
 module.exports = app;
