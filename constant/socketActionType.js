@@ -10,5 +10,6 @@ module.exports = {
   REMOVE_MARK_TYPING: 'REMOVE_MARK_TYPING',
   DISCONNECT: 'disconnect',
   JOIN: 'JOIN',
-  LEAVE: 'LEAVE'
+  LEAVE: 'LEAVE',
+  ACCEPT : 'ACCEPT'
 };
