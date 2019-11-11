@@ -9,7 +9,8 @@ const {
   saveExchangeData,
   searchParkList,
   deleteImage,
-  deleteOrderList
+  deleteOrderList,
+  changeExchangeStatus
 } = require('../routes/controller/park.controller');
 
 const Seat = require('../models/Seat');
@@ -26,6 +27,8 @@ router.post(
   sendFileLocation
 );
 router.post('/seats', verifyToken, saveExchangeData);
+
+router.post('/seats/:id', verifyToken, changeExchangeStatus);
 
 router.get('/seats/:id', verifyToken, searchParkList);
 

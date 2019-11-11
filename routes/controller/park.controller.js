@@ -40,7 +40,7 @@ exports.deleteImage = async (req, res, next) => {
     },
     function(err, data) {
       console.log(err);
-      console.log(data);
+      //console.log(data);
     }
   );
   next();
@@ -62,7 +62,6 @@ exports.sendFileLocation = (req, res, next) => {
 exports.saveExchangeData = async (req, res, next) => {
   const newExchange = new Seat(req.body.data);
   newExchange.save();
-  console.log(req.body.data);
   res.send({ result: req.body.data });
 };
 
@@ -71,6 +70,14 @@ exports.searchParkList = async (req, res, next) => {
     .where('park')
     .equals(req.params.id)
     .where('complete')
-    .equals(false);
+    .ne('true');
+    console.log(parkList);
   res.send({ result: 'ok', parkList: parkList });
 };
+
+exports.changeExchangeStatus = async (req, res, next) => {
+  const order = await Seat.findOne().where('_id').equals(req.params.id);
+  order.complete = req.body.status;
+  order.save();
+  res.send({result : 'ok'});
+}

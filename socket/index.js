@@ -17,8 +17,22 @@ module.exports = io => {
       socket.join(roomId);
     });
 
+    socket.on('PREVENT_ENTER', ({status, dataId})=>{
+      console.log(status);
+      console.log(dataId);
+      console.log("wow");
+      io.emit('ENTER_SOMEONE', dataId);
+    })
+
     socket.on('sendMessage', ({message, roomId}) => {
       io.sockets.in(roomId).emit('receiveMessage', message);
+    })
+
+    socket.on('sendAlert', ({userId, roomId}) =>{
+      console.log("유저 아이디 보냄",userId);
+      console.log(roomId);
+      //io.to(roomId).emit('receiveAlert', userId)
+      socket.to(roomId).broadcast.emit('receiveAlert', userId); // 나를 제외한 그룹 전체
     })
 
     socket.on(MESSAGE, ({ roomId, userId, message }) => {

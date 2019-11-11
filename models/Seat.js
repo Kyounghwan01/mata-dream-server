@@ -7,8 +7,8 @@ const seatSchema = new Schema({
     required: true
   },
   complete: {
-    type: Boolean,
-    default: false
+    type: String,
+    default: 'false'
   },
   point: {
     type: Number,
