@@ -35,11 +35,16 @@ module.exports = io => {
       socket.to(roomId).broadcast.emit('receiveAlert', userId); // 나를 제외한 그룹 전체
     })
 
+    socket.on('sendAccept', ({userId, roomId}) => {
+      socket.to(roomId).broadcast.emit('receiveAccept', userId);
+    })
+
     socket.on(MESSAGE, ({ roomId, userId, message }) => {
       io.to(roomId).emit(MESSAGE, { userId, message });
     });
 
-    socket.on(LEAVE, roomId => {
+    socket.on('LEAVE', roomId => {
+      console.log('leave');
       socket.leave(roomId);
     });
 
