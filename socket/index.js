@@ -37,6 +37,10 @@ module.exports = io => {
 
     socket.on('sendAccept', ({userId, roomId}) => {
       socket.to(roomId).broadcast.emit('receiveAccept', userId);
+    });
+
+    socket.on('CANCEL', ({roomId}) => {
+      socket.to(roomId).broadcast.emit('CANCEL_EVENT');
     })
 
     socket.on(MESSAGE, ({ roomId, userId, message }) => {
@@ -47,7 +51,6 @@ module.exports = io => {
       console.log('leave');
       socket.leave(roomId);
     });
-
 
   });
 };

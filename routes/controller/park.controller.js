@@ -61,8 +61,8 @@ exports.sendFileLocation = (req, res, next) => {
 
 exports.saveExchangeData = async (req, res, next) => {
   const newExchange = new Seat(req.body.data);
-  newExchange.save();
-  res.send({ result: req.body.data });
+  const data = await newExchange.save();
+  res.send({ result: req.body.data, newData : data });
 };
 
 exports.searchParkList = async (req, res, next) => {
