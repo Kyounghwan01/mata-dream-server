@@ -24,8 +24,8 @@ module.exports = io => {
       io.emit('ENTER_SOMEONE', dataId);
     })
 
-    socket.on('sendMessage', ({message, roomId}) => {
-      io.sockets.in(roomId).emit('receiveMessage', message);
+    socket.on('sendMessage', ({message, roomId, userId}) => {
+      io.sockets.in(roomId).emit('receiveMessage', [message, userId]);
     })
 
     socket.on('sendAlert', ({userId, roomId}) =>{
