@@ -75,7 +75,6 @@ exports.searchParkList = async (req, res, next) => {
     .equals(req.params.id)
     .where("complete")
     .ne("true");
-  console.log(parkList);
   res.send({ result: "ok", parkList: parkList });
 };
 
@@ -87,3 +86,15 @@ exports.changeExchangeStatus = async (req, res, next) => {
   order.save();
   res.send({ result: "ok" });
 };
+
+exports.changePointAndAddHistory = async (req, res, next) => {
+  const seller = await User.findOne().where('_id').equals(req.body.exchangeData.seller);
+  const buyer = await User.findOne().where('_id').equals(req.body.exchangeData.buyer);
+  seller.point += req.body.exchangeData.point;
+  buyer.point -= req.body.exchangeData.point;
+  seller.exchange_history.push(req.body.exchangeData);
+  buyer.exchange_history.push(req.body.exchangeData);
+  seller.save();
+  buyer.save();
+  res.send({result : 'ok'});
+}

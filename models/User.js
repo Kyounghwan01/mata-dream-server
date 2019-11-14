@@ -15,7 +15,6 @@ const userSchema = new Schema({
   profile_img_url: {
     type: String,
     default: 'https://wewalktest.s3.ap-northeast-2.amazonaws.com/129-512.png'
-    // Match:
   },
   name: {
     type: String,
@@ -31,7 +30,7 @@ const userSchema = new Schema({
        seller : {type: Schema.Types.ObjectId, required: true },
        buyer : {type: Schema.Types.ObjectId},
        point : {type: Number, required: true},
-       park : {type : Schema.Types.ObjectId, required: true}
+       park : {type : Schema.Types.ObjectId, required: true, ref: 'Park'}
     }
   ],
 }, { timestamps: true });
