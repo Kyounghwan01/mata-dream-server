@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Deploy to env
           command: |
-                eb deploy sample
+                eb deploy MatadreamServer-env
 workflows:
   version: 2
   build-deploy:
