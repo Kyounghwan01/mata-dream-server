@@ -35,8 +35,10 @@ describe("POST login data ", () => {
           console.log(err);
           return done(err);
         }
-        expect(Boolean(res.headers.usertoken)).to.equal(true);
-        done();
+        if(res){
+          expect(Boolean(res.headers.usertoken)).to.equal(true);
+          done();
+        }
       })
   });
 
