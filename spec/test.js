@@ -26,7 +26,7 @@ describe("POST login data ", () => {
       });
   });
 
-  it("should generate token to valiud user", done => {
+  xit("should generate token to valiud user", done => {
     request(app)
       .post("/auth/login/facebook")
       .send({...userData})
