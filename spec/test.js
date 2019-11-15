@@ -13,7 +13,7 @@ const userData = {
 };
 
 describe("POST login data ", () => {
-  it("should not allow no have token user", done => {
+  xit("should not allow no have token user", done => {
     request(app)
       .get("/auth/user")
       .expect("Content-Type", /json/)
