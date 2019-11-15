@@ -1,7 +1,6 @@
 const request = require("supertest");
 const { expect } = require("chai");
 const jwt = require("jsonwebtoken");
-// const USERS = require('../routes/users').USERS;
 
 const app = require("../app");
 
@@ -36,7 +35,6 @@ describe("POST login data ", () => {
           console.log(err);
           return done(err);
         }
-        console.log(res.headers.usertoken);
         expect(Boolean(res.headers.usertoken)).to.equal(true);
         done();
       })
