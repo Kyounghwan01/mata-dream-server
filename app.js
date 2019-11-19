@@ -10,8 +10,6 @@ const app = express();
 const authRouter = require('./routes/auth');
 const parkRouter = require('./routes/park');
 
-// const port = process.env.PORT || '3000';
-
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: false,

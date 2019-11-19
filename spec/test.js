@@ -13,7 +13,7 @@
 // };
 
 // describe("POST login data ", () => {
-//   xit("should not allow no have token user", done => {
+//   it("should not allow no have token user", done => {
 //     request(app)
 //       .get("/auth/user")
 //       .expect("Content-Type", /json/)
@@ -26,7 +26,7 @@
 //       });
 //   });
 
-//   xit("should generate token to valiud user", done => {
+//   it("should generate token to valiud user", done => {
 //     request(app)
 //       .post("/auth/login/facebook")
 //       .send({...userData})
