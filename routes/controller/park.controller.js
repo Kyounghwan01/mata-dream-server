@@ -8,7 +8,7 @@ const multerS3 = require("multer-s3");
 aws.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: "ap-northeast-2"
+  region: process.env.YOUR_REGION
 });
 
 const s3 = new aws.S3();
@@ -16,7 +16,7 @@ const s3 = new aws.S3();
 exports.uploadImage = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "nkhvc",
+    bucket: process.env.YOUR_BUCKET,
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: "public-read",
     key: (req, file, cb) => {
@@ -39,7 +39,7 @@ exports.deleteImage = async (req, res, next) => {
 
   s3.deleteObject(
     {
-      Bucket: "nkhvc",
+      Bucket: process.env.YOUR_BUCKET,
       Key: urlKey
     },
     function(err, data) {
